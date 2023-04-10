@@ -9,8 +9,10 @@ import tensorflow as tf
 app = FastAPI()
 
 origins = [
+
     "http://localhost",
     "http://localhost:3000",
+    "http://localhost:3001",
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -46,6 +48,7 @@ async def predict(
 
     predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
     confidence = np.max(predictions[0])
+    print(predicted_class)
     return {
         'class': predicted_class,
         'confidence': float(confidence)

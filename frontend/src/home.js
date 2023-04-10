@@ -171,7 +171,10 @@ export const ImageUpload = () => {
         url: "http://localhost:8000/predict",
         data: formData,
       });
+      console.log(res);
+
       if (res.status === 200) {
+        console.log(res);
         setData(res.data);
       }
       setIsloading(false);
@@ -217,6 +220,8 @@ export const ImageUpload = () => {
   if (data) {
     confidence = (parseFloat(data.confidence) * 100).toFixed(2);
   }
+
+  console.log(data);
 
   return (
     <React.Fragment>
